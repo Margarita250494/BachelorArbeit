@@ -1,17 +1,17 @@
 import React from "react";
-import Navbar from "../Components/Navbar";
+import Header from "../Components/Header";
 import Hero from "../Components/Hero";
 import Info from "../Components/Info";
 import About from "../Components/About";
 import BookAppointment from "../Components/BookAppointment";
 import Reviews from "../Components/Reviews";
-import Doctors from "../Components/Doctors";
+import Doctors from "../Components/Doctors.jsx";
 import Footer from "../Components/Footer";
 
 function Home() {
   return (
     <div className="home-section">
-      <Navbar />
+      <Header />
       <Hero />
       <Info />
       <About />

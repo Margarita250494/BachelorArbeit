@@ -25,14 +25,13 @@
     font-size: 40px;
     font-weight: bold;
     letter-spacing: .7px;
-}
-.ba-title > span {
     position: relative;
 }
-.ba-title span::before {
+
+.ba-title::before {
     content: '';
     position: absolute;
-    width: 75%;
+    width: 52%;
     height: 4px;
     background-color: #9D2553;
     border-radius: 8px;
@@ -54,6 +53,12 @@
     font-size: 22px;
     font-weight: bold;
     letter-spacing: .7px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+.ba-icon-check {
+    color: #1E8FFD;
 }
 .ba-check-first {
     margin-top: 40px;

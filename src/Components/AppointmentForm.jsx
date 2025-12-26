@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../Styles/AppointmentForm.css";
 import { ToastContainer, toast } from "react-toastify";
+import AllRights from './AllRights'
 
 function AppointmentForm() {
   useEffect(() => {
@@ -70,19 +71,24 @@ function AppointmentForm() {
   };
 
   return (
-    <div className="appointment-form-section">
-      <h1 className="legal-siteTitle">
-        <Link to="/">
-          Health <span className="legal-siteSign">+</span>
-        </Link>
-      </h1>
+    <section className="appointment-form-section">
+      <Link
+        to="/"
+        className="legal-siteTitle"
+      >
+        Health <span className="legal-siteSign">+</span>
+      </Link>
+
 
       <div className="form-container">
         <h2 className="form-title">
           <span>Book Appointment Online</span>
         </h2>
 
-        <form className="form-content" onSubmit={handleSubmit}>
+        <form
+          className="form-content"
+          onSubmit={handleSubmit}
+        >
           <label>
             Patient Full Name:
             <input
@@ -91,7 +97,9 @@ function AppointmentForm() {
               onChange={(e) => setPatientName(e.target.value)}
               required
             />
-            {formErrors.patientName && <p className="error-message">{formErrors.patientName}</p>}
+            {formErrors.patientName && (
+              <p className="error-message">{formErrors.patientName}</p>
+            )}
           </label>
 
           <br />
@@ -103,7 +111,9 @@ function AppointmentForm() {
               onChange={(e) => setPatientNumber(e.target.value)}
               required
             />
-            {formErrors.patientNumber && <p className="error-message">{formErrors.patientNumber}</p>}
+            {formErrors.patientNumber && (
+              <p className="error-message">{formErrors.patientNumber}</p>
+            )}
           </label>
 
           <br />
@@ -119,7 +129,9 @@ function AppointmentForm() {
               <option value="female">Female</option>
               <option value="private">I will inform Doctor only</option>
             </select>
-            {formErrors.patientGender && <p className="error-message">{formErrors.patientGender}</p>}
+            {formErrors.patientGender && (
+              <p className="error-message">{formErrors.patientGender}</p>
+            )}
           </label>
 
           <br />
@@ -131,7 +143,9 @@ function AppointmentForm() {
               onChange={(e) => setAppointmentTime(e.target.value)}
               required
             />
-            {formErrors.appointmentTime && <p className="error-message">{formErrors.appointmentTime}</p>}
+            {formErrors.appointmentTime && (
+              <p className="error-message">{formErrors.appointmentTime}</p>
+            )}
           </label>
 
           <br />
@@ -146,24 +160,38 @@ function AppointmentForm() {
               <option value="voice">Voice Call</option>
               <option value="video">Video Call</option>
             </select>
-            {formErrors.preferredMode && <p className="error-message">{formErrors.preferredMode}</p>}
+            {formErrors.preferredMode && (
+              <p className="error-message">{formErrors.preferredMode}</p>
+            )}
           </label>
 
           <br />
-          <button type="submit" className="text-appointment-btn">
+          <button
+            type="submit"
+            className="text-appointment-btn"
+          >
             Confirm Appointment
           </button>
 
-          <p className="success-message" style={{display: isSubmitted ? "block" : "none"}}>Appointment details has been sent to the patients phone number via SMS.</p>
+          <p
+            className="success-message"
+            style={{display: isSubmitted ? 'block' : 'none'}}
+          >
+            Appointment details has been sent to the patients phone number via
+            SMS.
+          </p>
         </form>
       </div>
 
-      <div className="legal-footer">
-        <p>© 2013-2023 Health+. All rights reserved.</p>
-      </div>
 
-      <ToastContainer autoClose={5000} limit={1} closeButton={false} />
-    </div>
+      <AllRights className="legal-footer" />
+
+      <ToastContainer
+        autoClose={5000}
+        limit={1}
+        closeButton={false}
+      />
+    </section>
   );
 }
 

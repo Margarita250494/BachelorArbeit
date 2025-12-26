@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import Doctor from "../Assets/doctor-picture.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendarCheck, faAngleUp } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate  } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import "../Styles/Hero.css";
+import {ArrowUp, CalendarCheck} from '../utils/icons'
+import {infoHero} from '../utils/hero.data'
 
 function Hero() {
   const navigate = useNavigate();
   const [goUp, setGoUp] = useState(false);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({top: 0, behavior: "smooth"});
   };
 
   const handleBookAppointmentClick = () => {
@@ -33,14 +33,14 @@ function Hero() {
   }, []);
 
   return (
-    <div className="section-container">
+    <section className="section-container">
       <div className="hero-section">
         <div className="text-section">
-          <p className="text-headline">❤️ Health comes first</p>
-          <h2 className="text-title">
+          <h4 className="text-headline">❤️ Health comes first</h4>
+          <h1 className="text-title">
             Find your Doctor and make an Appointments
-          </h2>
-          <p className="text-descritpion">
+          </h1>
+          <p className="text-description">
             Talk to online doctors and get medical advice, online prescriptions,
             refills and medical notes within minutes. On-demand healthcare
             services at your fingertips.
@@ -50,38 +50,39 @@ function Hero() {
             type="button"
             onClick={handleBookAppointmentClick}
           >
-            <FontAwesomeIcon icon={faCalendarCheck} /> Book Appointment
+            <CalendarCheck /> Book Appointment
           </button>
-          <div className="text-stats">
-            <div className="text-stats-container">
-              <p>145k+</p>
-              <p>Receive Patients</p>
-            </div>
-
-            <div className="text-stats-container">
-              <p>50+</p>
-              <p>Expert Doctors</p>
-            </div>
-
-            <div className="text-stats-container">
-              <p>10+</p>
-              <p>Years of Experience</p>
-            </div>
-          </div>
+          <ul className="text-stats">
+            {infoHero.map(({id, number, desc}) => (
+              <li
+                key={id}
+                className="text-stats-container"
+              >
+                <p>{number}+</p>
+                <p>{desc}</p>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="hero-image-section">
-          <img className="hero-image1" src={Doctor} alt="Doctor" />
+          <img
+            className="hero-image1"
+            src={Doctor}
+            alt="Doctor"
+            loading="eager"
+          />
         </div>
       </div>
 
-      <div
+      <button
+        type="button"
         onClick={scrollToTop}
-        className={`scroll-up ${goUp ? "show-scroll" : ""}`}
+        className={`scroll-up ${goUp ? 'show-scroll' : ''}`}
       >
-        <FontAwesomeIcon icon={faAngleUp} />
-      </div>
-    </div>
+        <ArrowUp />
+      </button>
+    </section>
   );
 }
 

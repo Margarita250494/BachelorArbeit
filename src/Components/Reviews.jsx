@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { customerReviews } from "../Scripts/reviews";
+import React, {useState} from "react";
+import {customerReviews} from "../Scripts/reviews";
 import "../Styles/Reviews.css";
 
 function Reviews() {
@@ -31,13 +31,16 @@ function Reviews() {
   handleReviewsUpdation();
 
   return (
-    <div className="review-section" id="reviews">
+    <section
+      className="review-section"
+      id="reviews"
+    >
       <div className="rw-text-content">
         <p className="rw-text-title">
           More over <span className="rw-text-num">1500+ Customers</span>
         </p>
 
-        <p className="rw-text-desc">Don't believe us, Check clients word</p>
+        <h2 className="rw-text-desc">Don't believe us, Check clients word</h2>
 
         <p className="rw-text-format">
           <span className="rw-text-quote1">''</span>
@@ -69,7 +72,7 @@ function Reviews() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
