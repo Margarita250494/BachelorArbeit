@@ -3,18 +3,20 @@
     background: linear-gradient(to right, #ECF2FF, #FBFCFF);
 }
 /* Title */
-.legal-siteTitle a {
-    text-decoration: none;
-    color: #1A8EFD;
-    font-size: 48px;
-    letter-spacing: .8px;
-}
+
 .legal-siteTitle {
+    display: block;
     padding: 0 0 8px 0;
     border-radius: 2px;
     background-color: white;
     text-align: center;
     font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    color: #1A8EFD;
+    font-size: 48px;
+    font-weight: 600;
+    letter-spacing: .8px;
+    width: 100%;
 }
 .legal-siteSign{
     color: #54de54;

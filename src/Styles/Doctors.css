@@ -12,6 +12,7 @@
     font-size: 40px;
     font-weight: bold;
     letter-spacing: .7px;
+
 }
 .dt-title > span {
     position: relative;
@@ -58,6 +59,7 @@
     background-position: center;
     background-color: #DDE5F8;
     border-radius: 20px;
+    object-fit: contain;
 }
 .dt-card-name {
     margin: 12px 0 0 0;
@@ -76,6 +78,14 @@
     font-size: 18px;
     font-weight: bold;
     letter-spacing: .7px;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.dt-card-icon-star {
+    color: #F7BB50;
+    paddingRight: '6px'
 }
 .dt-card-reviews {
     color: #5a5a5a;

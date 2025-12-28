@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import React, {useState} from "react";
+import {toast, ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function SubscribeNewsletter() {
@@ -15,24 +15,24 @@ function SubscribeNewsletter() {
     if (!isButtonDisabled) {
       emailRegex.test(inputEmail)
         ? toast.success("Subscribed to Newsletter !", {
-            position: toast.POSITION.TOP_CENTER,
-            onOpen: () => {
-              setIsButtonDisabled(true);
-              setInputEmail("");
-            },
-            onClose: () => setIsButtonDisabled(false),
-          })
+          position: toast.POSITION.TOP_CENTER,
+          onOpen: () => {
+            setIsButtonDisabled(true);
+            setInputEmail("");
+          },
+          onClose: () => setIsButtonDisabled(false)
+        })
         : toast.error("Invalid Email Address !", {
-            position: toast.POSITION.TOP_CENTER,
-            onOpen: () => setIsButtonDisabled(true),
-            onClose: () => setIsButtonDisabled(false),
-          });
+          position: toast.POSITION.TOP_CENTER,
+          onOpen: () => setIsButtonDisabled(true),
+          onClose: () => setIsButtonDisabled(false)
+        });
     }
   };
 
   return (
     <div className="ft-info-p2">
-      <p className="ft-input-title">Stay Update to our Newsletter</p>
+      <h6 className="ft-input-title">Stay Update to our Newsletter</h6>
       <input
         type="text"
         inputMode="email"
@@ -52,7 +52,11 @@ function SubscribeNewsletter() {
         Subscribe
       </button>
 
-      <ToastContainer autoClose={4000} limit={1} closeButton={false} />
+      <ToastContainer
+        autoClose={4000}
+        limit={1}
+        closeButton={false}
+      />
     </div>
   );
 }
