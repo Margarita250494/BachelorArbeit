@@ -79,21 +79,21 @@ export const footerContactLinks = [
     title: '+022 2326 6232'
   }
 ]
-
+const styleIcon = 'w-6 h-6 p-px fill-gray-200 group-hover:fill-primary-500'
 export const footerSocialLinks = [
   {
     link: 'https://linkedin.com/in/Alkaison/',
     title: 'LinkedIn',
-    icon: <LinkedIn />
+    icon: <LinkedIn className={styleIcon} />
   },
   {
     link: 'https://facebook.com/',
     title: 'FaceBook',
-    icon: <Facebook />
+    icon: <Facebook className={styleIcon} />
   },
   {
     link: 'https://x.com/Alkaison/',
     title: 'Twitter',
-    icon: <Twitter />
+    icon: <Twitter className={styleIcon} />
   }
 ]

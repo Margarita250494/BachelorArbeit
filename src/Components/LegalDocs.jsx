@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import "../Styles/LegalDocs.css";
 import {infoLegalDocs} from '../utils/legalDocs.data'
 import AllRights from './AllRights'
+import Description from './layout/Description'
 
 function LegalDocs() {
   useEffect(() => {
@@ -23,9 +24,10 @@ function LegalDocs() {
         {infoLegalDocs.map(({title, description}) => (
           <Fragment key={title}>
             <h4 className="legal-title">{title}</h4>
-            <p className="legal-description">
-              {description}
-            </p>
+            <Description
+              variant="legal"
+              description={description}
+            />
           </Fragment>
         ))}
       </div>

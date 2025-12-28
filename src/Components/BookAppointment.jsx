@@ -5,6 +5,10 @@ import "../Styles/BookAppointment.css";
 import {infoBookAppointment} from '../utils/bookApointment.data'
 import {CalendarCheck, CircleCheck} from '../utils/icons'
 import {clsx} from 'clsx'
+import MainButton from './buttons/MainButton'
+import SectionDefault from './layout/SectionDefault'
+import SectionHeading from './layout/SectionHeading'
+import Description from './layout/Description'
 
 function BookAppointment() {
   const navigate = useNavigate();
@@ -16,7 +20,10 @@ function BookAppointment() {
   const lastItem = infoBookAppointment.length - 1
 
   return (
-    <section className="ba-section">
+    <SectionDefault
+      isBgWhite
+      isMobileBlock
+    >
       <div className="ba-image-content">
         <img
           src={Doctor}
@@ -27,15 +34,15 @@ function BookAppointment() {
       </div>
 
       <div className="ba-text-content">
-        <h2 className="ba-title">
-          Why Choose Health
-        </h2>
-        <p className="ba-description">
-          Discover the reasons to choose Health Plus for your healthcare needs.
+        <SectionHeading heading="Why Choose Health" />
+        <Description
+          variant="book"
+          description="Discover the reasons to choose Health Plus for your healthcare needs.
           Experience expert care, convenience, and personalized solutions,
           making your well-being our top priority. Join us on a journey to
-          better health and a happier life.
-        </p>
+          better health and a happier life."
+        />
+
         <ul>
           {infoBookAppointment.map((info, index) => (
             <li
@@ -48,16 +55,13 @@ function BookAppointment() {
               {info.title}
             </li>
           ))}</ul>
-
-        <button
-          className="text-appointment-btn"
-          type="button"
+        <MainButton
           onClick={handleBookAppointmentClick}
-        >
-          <CalendarCheck /> Book Appointment
-        </button>
+          icon={<CalendarCheck />}
+          title="Book Appointment"
+        />
       </div>
-    </section>
+    </SectionDefault>
   );
 }
 

@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "../Components/Header";
+import Header from "../Components/layout/header/Header";
 import Hero from "../Components/Hero";
 import Info from "../Components/Info";
 import About from "../Components/About";
 import BookAppointment from "../Components/BookAppointment";
 import Reviews from "../Components/Reviews";
 import Doctors from "../Components/Doctors.jsx";
-import Footer from "../Components/Footer";
+import Footer from "../Components/layout/footer/Footer";
 
 function Home() {
   return (

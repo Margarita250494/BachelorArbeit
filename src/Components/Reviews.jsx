@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import {customerReviews} from "../Scripts/reviews";
 import "../Styles/Reviews.css";
+import ArrowButton from './buttons/ArrowButton'
+import SectionDefault from './layout/SectionDefault'
 
 function Reviews() {
   let rMessage, rName, rLocation;
@@ -31,9 +33,10 @@ function Reviews() {
   handleReviewsUpdation();
 
   return (
-    <section
-      className="review-section"
+    <SectionDefault
       id="reviews"
+      isBgWhite={false}
+      className="tracking-[.8px] md:tracking-normal"
     >
       <div className="rw-text-content">
         <p className="rw-text-title">
@@ -55,24 +58,18 @@ function Reviews() {
           </div>
 
           <div className="rw-btns">
-            <button
-              className="rw-next-btn"
-              type="button"
+            <ArrowButton
               onClick={backBtnClick}
-            >
-              ←
-            </button>
-            <button
-              className="rw-next-btn"
-              type="button"
+              arrow="←"
+            />
+            <ArrowButton
               onClick={frontBtnClick}
-            >
-              →
-            </button>
+              arrow="→"
+            />
           </div>
         </div>
       </div>
-    </section>
+    </SectionDefault>
   );
 }
 

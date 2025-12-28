@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
 import "../Styles/AppointmentForm.css";
-import { ToastContainer, toast } from "react-toastify";
+import {toast, ToastContainer} from "react-toastify";
 import AllRights from './AllRights'
+import MainButton from './buttons/MainButton'
 
 function AppointmentForm() {
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({top: 0, behavior: "smooth"});
   });
 
   const [patientName, setPatientName] = useState("");
@@ -66,7 +67,7 @@ function AppointmentForm() {
     toast.success("Appointment Scheduled !", {
       position: toast.POSITION.TOP_CENTER,
       onOpen: () => setIsSubmitted(true),
-      onClose: () => setIsSubmitted(false),
+      onClose: () => setIsSubmitted(false)
     });
   };
 
@@ -166,13 +167,10 @@ function AppointmentForm() {
           </label>
 
           <br />
-          <button
+          <MainButton
             type="submit"
-            className="text-appointment-btn"
-          >
-            Confirm Appointment
-          </button>
-
+            title="Confirm Appointment"
+          />
           <p
             className="success-message"
             style={{display: isSubmitted ? 'block' : 'none'}}

@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {toast, ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import MainButton from './buttons/MainButton'
 
 function SubscribeNewsletter() {
   const [inputEmail, setInputEmail] = useState("");
@@ -31,26 +32,31 @@ function SubscribeNewsletter() {
   };
 
   return (
-    <div className="ft-info-p2">
-      <h6 className="ft-input-title">Stay Update to our Newsletter</h6>
+    <div>
+      <h6
+        className="text-white font-serif text-[22px] font-bold
+      tracking-[0.8px]"
+      >Stay Update to our Newsletter
+      </h6>
       <input
         type="text"
         inputMode="email"
-        className="ft-input"
+        className="w-full md:w-[300px] my-4 mr-0 md:mt-5 md:mr-2 py-4 px-[22px]
+        text-white bg-gray-800 border-none rounded-[50px] outline-none
+        font-serif text-[18px] tracking-[0.8px]"
         placeholder="Enter your email address"
         name="email"
         value={inputEmail}
         onChange={handleEmailInput}
         autoComplete="true"
       />
-      <button
-        className="text-appointment-btn"
-        type="button"
-        disabled={isButtonDisabled}
+      <MainButton
+        title="Subscribe"
         onClick={handleBookAppointmentClick}
-      >
-        Subscribe
-      </button>
+        disabled={isButtonDisabled}
+        className="tracking-normal h-[49px] md:h-auto inline-block lg:inline-block"
+
+      />
 
       <ToastContainer
         autoClose={4000}

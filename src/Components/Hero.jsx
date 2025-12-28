@@ -1,9 +1,12 @@
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import Doctor from "../Assets/doctor-picture.webp";
 import {useNavigate} from "react-router-dom";
 import "../Styles/Hero.css";
 import {ArrowUp, CalendarCheck} from '../utils/icons'
 import {infoHero} from '../utils/hero.data'
+import MainButton from './buttons/MainButton'
+import SectionDefault from './layout/SectionDefault'
+import Description from './layout/Description'
 
 function Hero() {
   const navigate = useNavigate();
@@ -33,25 +36,35 @@ function Hero() {
   }, []);
 
   return (
-    <section className="section-container">
-      <div className="hero-section">
-        <div className="text-section">
-          <h4 className="text-headline">❤️ Health comes first</h4>
-          <h1 className="text-title">
+    <>
+      <SectionDefault
+        isBgWhite={false}
+        isMobileBlock={false}
+      >
+        <div className="w-full px-0 lg:w-[60%] lg:px-8">
+          <h4
+            className="mb-3 text-gray-600 font-serif text-[20px]
+            md-xs:text-[22px] font-bold
+          tracking-[0.7px]"
+          >❤️ Health comes first
+          </h4>
+          <h1
+            className="w-full lg:w-[500px] text-black text-[28px]
+          md-xs:text-[40px] font-bold"
+          >
             Find your Doctor and make an Appointments
           </h1>
-          <p className="text-description">
-            Talk to online doctors and get medical advice, online prescriptions,
-            refills and medical notes within minutes. On-demand healthcare
-            services at your fingertips.
-          </p>
-          <button
-            className="text-appointment-btn"
-            type="button"
+          <Description
+            variant="hero"
+            description="Talk to online doctors and get medical advice,
+            online prescriptions,refills and medical notes within minutes.
+            On-demand healthcare services at your fingertips."
+          />
+          <MainButton
             onClick={handleBookAppointmentClick}
-          >
-            <CalendarCheck /> Book Appointment
-          </button>
+            icon={<CalendarCheck />}
+            title="Book Appointment"
+          />
           <ul className="text-stats">
             {infoHero.map(({id, number, desc}) => (
               <li
@@ -73,7 +86,7 @@ function Hero() {
             loading="eager"
           />
         </div>
-      </div>
+      </SectionDefault>
 
       <button
         type="button"
@@ -82,7 +95,7 @@ function Hero() {
       >
         <ArrowUp />
       </button>
-    </section>
+    </>
   );
 }
 

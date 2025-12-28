@@ -3,12 +3,16 @@ import Doctor from "../Assets/doctor-group.webp";
 import SolutionStep from "./SolutionStep";
 import "../Styles/About.css";
 import {aboutInfo} from '../utils/about.data'
+import SectionDefault from './layout/SectionDefault'
+import SectionHeading from './layout/SectionHeading'
+import Description from './layout/Description'
 
 function About() {
   return (
-    <section
-      className="about-section"
+    <SectionDefault
       id="about"
+      isBgWhite={false}
+      isMobileBlock
     >
       <div className="about-image-content">
         <img
@@ -20,15 +24,15 @@ function About() {
       </div>
 
       <div className="about-text-content">
-        <h2 className="about-title">
-          <span>About Us</span>
-        </h2>
-        <p className="about-description">
-          Welcome to Health Plus, your trusted partner for accessible and
+        <SectionHeading heading="About Us" />
+        <Description
+          variant="about"
+          description="Welcome to Health Plus, your trusted partner for accessible and
           personalized healthcare. Our expert doctors offer online consultations
           and specialized services, prioritizing your well-being. Join us on
-          this journey towards a healthier you.
-        </p>
+          this journey towards a healthier you."
+        />
+
 
         <h4 className="about-text-title">Your Solutions</h4>
         {aboutInfo.map(({title, description}) => (
@@ -40,7 +44,7 @@ function About() {
 
         ))}
       </div>
-    </section>
+    </SectionDefault>
   );
 }
 
