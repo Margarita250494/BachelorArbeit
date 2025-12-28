@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import Doctor from "../Assets/doctor-picture.png";
+import Doctor from "../Assets/doctor-picture.webp";
 import {useNavigate} from "react-router-dom";
 import "../Styles/Hero.css";
 import {ArrowUp, CalendarCheck} from '../utils/icons'
