@@ -1,4 +1,4 @@
-import {Facebook, LinkedIn, Twitter} from './icons'
+import {Facebook, LinkedIn, Twitter} from '../icons'
 import React from 'react'
 
 export const footerServicesLinks = [

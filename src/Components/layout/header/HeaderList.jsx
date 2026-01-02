@@ -1,4 +1,4 @@
-import {headerLinksToSections} from '../../../utils/header.data'
+import {headerLinksToSections} from '../../../utils/data/header.data'
 import {Link} from 'react-router-dom'
 
 export const HeaderList = ({isMobile = false, className, onClick}) => {

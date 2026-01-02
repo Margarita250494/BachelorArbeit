@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {memo} from 'react';
 import ErrorMessage from './ErrorMessage'
 
-function Select({id, value, handleChange, label, options, error}) {
+const Select = memo(({id, value, handleChange, label, options, error}) => {
   return (
     <label
       htmlFor={id}
@@ -32,6 +32,6 @@ function Select({id, value, handleChange, label, options, error}) {
       {error && <ErrorMessage message={error} />}
     </label>
   );
-}
+})
 
 export default Select;

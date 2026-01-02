@@ -1,36 +1,11 @@
-import React, {useState} from "react";
-import {customerReviews} from "../Scripts/reviews";
+import {customerReviews} from "../utils/data/reviews";
 import ArrowButton from './buttons/ArrowButton'
 import SectionDefault from './layout/SectionDefault'
 import Quote from './Quote'
+import useReviews from '../utils/hooks/useReviews.hook'
 
 function Reviews() {
-  let rMessage, rName, rLocation;
-  const reviewsLength = customerReviews.length - 1;
-  const [review, setReview] = useState(0);
-
-  // back to previous review
-  const backBtnClick = () => {
-    setReview(review <= 0 ? reviewsLength : review - 1);
-    handleReviewsUpdation();
-  };
-
-  // go to newer review
-  const frontBtnClick = () => {
-    setReview(review >= reviewsLength ? 0 : review + 1);
-    handleReviewsUpdation();
-  };
-
-  // update reviews
-  const handleReviewsUpdation = () => {
-    const reviewMessage = customerReviews[review];
-    rName = reviewMessage.name;
-    rLocation = reviewMessage.location;
-    rMessage = reviewMessage.message;
-  };
-
-  // list review on visit
-  handleReviewsUpdation();
+  const {currentReview, goToPrevious, goToNext} = useReviews(customerReviews);
 
   return (
     <SectionDefault
@@ -54,26 +29,27 @@ function Reviews() {
           <span
             className="block ml-2 font-serif text-[22px] md:text-[24px]
             tracking-[0.7px] leading-[1.8rem] md:leading-[2.2rem]"
-          >{rMessage}</span>
+          >{currentReview.message}</span>
           <Quote isEnd />
         </p>
 
         <div className="ml-2 flex flex-wrap justify-between items-center">
           <div>
-            <p className="text-[20px] md:text-[24px] font-bold tracking-[0.8px]">{rName}</p>
+            <p className="text-[20px] md:text-[24px] font-bold tracking-[0.8px]">
+              {currentReview.name}</p>
             <p
               className="mt-[6px] text-gray-400 font-serif text-[18px]
             font-bold tracking-[0.8px]"
-            >{rLocation}</p>
+            >{currentReview.location}</p>
           </div>
 
           <div>
             <ArrowButton
-              onClick={backBtnClick}
+              onClick={goToPrevious}
               arrow="←"
             />
             <ArrowButton
-              onClick={frontBtnClick}
+              onClick={goToNext}
               arrow="→"
             />
           </div>

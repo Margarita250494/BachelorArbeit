@@ -1,7 +1,7 @@
 import Doctor from "../Assets/doctor-picture.webp";
 import {useNavigate} from "react-router-dom";
 import {CalendarCheck} from '../utils/icons'
-import {infoHero} from '../utils/hero.data'
+import {infoHero} from '../utils/data/hero.data'
 import MainButton from './buttons/MainButton'
 import SectionDefault from './layout/SectionDefault'
 import Description from './layout/Description'
@@ -23,12 +23,11 @@ function Hero() {
         <div className="w-full px-0 lg:w-[60%] lg:px-8">
           <h4
             className="mb-3 text-gray-600 font-serif text-[20px]
-            md-xs:text-[22px] font-bold
-          tracking-[0.7px]"
+            md-xs:text-[22px] font-bold tracking-[0.7px]"
           >❤️ Health comes first
           </h4>
           <h1
-            className="w-full lg:w-[500px] text-black text-[28px]
+            className="w-full lg:w-[500px] font-sans text-[28px]
           md-xs:text-[40px] font-bold"
           >
             Find your Doctor and make an Appointments

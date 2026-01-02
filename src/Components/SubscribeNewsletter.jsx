@@ -1,35 +1,10 @@
-import React, {useState} from "react";
-import {toast, ToastContainer} from "react-toastify";
+import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import MainButton from './buttons/MainButton'
+import useNewsletter from '../utils/hooks/useNewsletter.hook'
 
 function SubscribeNewsletter() {
-  const [inputEmail, setInputEmail] = useState("");
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-  const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-
-  const handleEmailInput = (event) => {
-    setInputEmail(event.target.value);
-  };
-
-  const handleBookAppointmentClick = () => {
-    if (!isButtonDisabled) {
-      emailRegex.test(inputEmail)
-        ? toast.success("Subscribed to Newsletter !", {
-          position: toast.POSITION.TOP_CENTER,
-          onOpen: () => {
-            setIsButtonDisabled(true);
-            setInputEmail("");
-          },
-          onClose: () => setIsButtonDisabled(false)
-        })
-        : toast.error("Invalid Email Address !", {
-          position: toast.POSITION.TOP_CENTER,
-          onOpen: () => setIsButtonDisabled(true),
-          onClose: () => setIsButtonDisabled(false)
-        });
-    }
-  };
+  const {email, isSubmitting, handleEmailChange, subscribe} = useNewsletter();
 
   return (
     <div>
@@ -46,14 +21,14 @@ function SubscribeNewsletter() {
         font-serif text-[18px] tracking-[0.8px]"
         placeholder="Enter your email address"
         name="email"
-        value={inputEmail}
-        onChange={handleEmailInput}
+        value={email}
+        onChange={handleEmailChange}
         autoComplete="true"
       />
       <MainButton
         title="Subscribe"
-        onClick={handleBookAppointmentClick}
-        disabled={isButtonDisabled}
+        onClick={subscribe}
+        disabled={isSubmitting}
         className="tracking-normal h-[49px] md:h-auto inline-block lg:inline-block"
 
       />

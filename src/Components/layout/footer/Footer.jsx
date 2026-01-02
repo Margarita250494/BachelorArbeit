@@ -5,7 +5,7 @@ import {
   footerLegalLinks,
   footerServicesLinks,
   footerSocialLinks
-} from '../../../utils/footer.data'
+} from '../../../utils/data/footer.data'
 import AllRights from '../../AllRights'
 import BrandTitle from '../../BrandTitle'
 import Description from '../Description'

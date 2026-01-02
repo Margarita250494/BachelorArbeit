@@ -1,6 +1,6 @@
 import React from "react";
 import InformationCard from "./InformationCard";
-import {infoData} from '../utils/info.data'
+import {infoData} from '../utils/data/info.data'
 import SectionHeading from './layout/SectionHeading'
 import CustomSection from './layout/CustomSection'
 import Description from './layout/Description'
