@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/BachelorArbeit/static/css/main.76e5390f.css",
-    "main.js": "/BachelorArbeit/static/js/main.1277597f.js",
+    "main.js": "/BachelorArbeit/static/js/main.895c94b3.js",
     "static/css/737.998b7e5e.chunk.css": "/BachelorArbeit/static/css/737.998b7e5e.chunk.css",
     "static/js/737.6b565633.chunk.js": "/BachelorArbeit/static/js/737.6b565633.chunk.js",
     "static/js/855.09c26b4f.chunk.js": "/BachelorArbeit/static/js/855.09c26b4f.chunk.js",
@@ -27,7 +27,7 @@
     "static/media/Poppins-Medium.woff2": "/BachelorArbeit/static/media/Poppins-Medium.08491d3f7fe7ae88ef44.woff2",
     "index.html": "/BachelorArbeit/index.html",
     "main.76e5390f.css.map": "/BachelorArbeit/static/css/main.76e5390f.css.map",
-    "main.1277597f.js.map": "/BachelorArbeit/static/js/main.1277597f.js.map",
+    "main.895c94b3.js.map": "/BachelorArbeit/static/js/main.895c94b3.js.map",
     "737.998b7e5e.chunk.css.map": "/BachelorArbeit/static/css/737.998b7e5e.chunk.css.map",
     "737.6b565633.chunk.js.map": "/BachelorArbeit/static/js/737.6b565633.chunk.js.map",
     "855.09c26b4f.chunk.js.map": "/BachelorArbeit/static/js/855.09c26b4f.chunk.js.map",
@@ -39,6 +39,6 @@
   },
   "entrypoints": [
     "static/css/main.76e5390f.css",
-    "static/js/main.1277597f.js"
+    "static/js/main.895c94b3.js"
   ]
 }
