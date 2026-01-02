@@ -41,6 +41,7 @@ module.exports = {
         },
 
         blueSoft: {
+          50: "#c9def4",
           100: "#dce6ff",
           200: "#dde5f8",
           300: "#0cc2ea"
@@ -49,7 +50,8 @@ module.exports = {
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],
         serif: ['Rubik', 'serif'],
-        'cambria': ['Cambria, sans-serif']
+        'cambria': ['Cambria, sans-serif'],
+        'arial': ['Arial']
       },
       backgroundImage: {
         'gradient': 'linear-gradient(to right, #ECF2FF, #FBFCFF)'

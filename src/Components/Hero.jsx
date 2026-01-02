@@ -1,39 +1,18 @@
-import {useEffect, useState} from "react";
 import Doctor from "../Assets/doctor-picture.webp";
 import {useNavigate} from "react-router-dom";
-import "../Styles/Hero.css";
-import {ArrowUp, CalendarCheck} from '../utils/icons'
+import {CalendarCheck} from '../utils/icons'
 import {infoHero} from '../utils/hero.data'
 import MainButton from './buttons/MainButton'
 import SectionDefault from './layout/SectionDefault'
 import Description from './layout/Description'
+import ScrollToTopButton from './buttons/ScrollToTopButton'
 
 function Hero() {
   const navigate = useNavigate();
-  const [goUp, setGoUp] = useState(false);
-
-  const scrollToTop = () => {
-    window.scrollTo({top: 0, behavior: "smooth"});
-  };
-
   const handleBookAppointmentClick = () => {
     navigate("/appointment");
   };
 
-  useEffect(() => {
-    const onPageScroll = () => {
-      if (window.scrollY > 600) {
-        setGoUp(true);
-      } else {
-        setGoUp(false);
-      }
-    };
-    window.addEventListener("scroll", onPageScroll);
-
-    return () => {
-      window.removeEventListener("scroll", onPageScroll);
-    };
-  }, []);
 
   return (
     <>
@@ -65,22 +44,27 @@ function Hero() {
             icon={<CalendarCheck />}
             title="Book Appointment"
           />
-          <ul className="text-stats">
+          <ul className="flex items-center gap-[18px] md-xs:gap-12 mt-10">
             {infoHero.map(({id, number, desc}) => (
               <li
                 key={id}
-                className="text-stats-container"
+                className="text-center tracking-[0.7px]"
               >
-                <p>{number}+</p>
-                <p>{desc}</p>
+                <p className="mb-2 text-primary-500 text-[22px] md-xs:text-[32px] font-bold font-serif">{number}+</p>
+                <p
+                  className="text-gray-600 font-sans text-[16px] md-xs:text-[22px]
+                tracking-[0.7px]"
+                >{desc}</p>
               </li>
             ))}
           </ul>
         </div>
 
-        <div className="hero-image-section">
+        <div className="hidden lg:flex justify-center w-[40%] max-w-full">
           <img
-            className="hero-image1"
+            width={641}
+            height={617}
+            className="w-full h-auto"
             src={Doctor}
             alt="Doctor"
             loading="eager"
@@ -88,13 +72,7 @@ function Hero() {
         </div>
       </SectionDefault>
 
-      <button
-        type="button"
-        onClick={scrollToTop}
-        className={`scroll-up ${goUp ? 'show-scroll' : ''}`}
-      >
-        <ArrowUp />
-      </button>
+      <ScrollToTopButton />
     </>
   );
 }

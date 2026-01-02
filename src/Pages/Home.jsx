@@ -1,4 +1,3 @@
-import React from "react";
 import Header from "../Components/layout/header/Header";
 import Hero from "../Components/Hero";
 import Info from "../Components/Info";

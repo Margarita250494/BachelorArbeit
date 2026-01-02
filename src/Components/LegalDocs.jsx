@@ -1,9 +1,8 @@
 import React, {Fragment, useEffect} from "react";
-import {Link} from "react-router-dom";
-import "../Styles/LegalDocs.css";
 import {infoLegalDocs} from '../utils/legalDocs.data'
 import AllRights from './AllRights'
 import Description from './layout/Description'
+import BrandTitle from './BrandTitle'
 
 function LegalDocs() {
   useEffect(() => {
@@ -11,29 +10,34 @@ function LegalDocs() {
   });
 
   return (
-    <div className="legal-section-title">
-      <Link
-        to="/"
-        className="legal-siteTitle"
-      >
-        Health <span className="legal-siteSign">+</span>
-      </Link>
+    <>
+      <div className="w-full block pb-2 bg-white text-center">
+        <BrandTitle
+          to="/"
+          classNameComponent="text-[48px] tracking-[0.8px] font-semibold
+          "
+          classNamePlus="text-[56px]"
+        />
+      </div>
 
 
-      <div className="legal-text-content">
+      <ul className="py-3 px-8 bg-gradient">
         {infoLegalDocs.map(({title, description}) => (
-          <Fragment key={title}>
-            <h4 className="legal-title">{title}</h4>
+          <li key={title}>
+            <h4
+              className="my-4 border-b-2
+            border-gray-border text-[24px] md-xs:text-[32px] font-bold tracking-[0.8px]"
+            >{title}</h4>
             <Description
               variant="legal"
               description={description}
             />
-          </Fragment>
+          </li>
         ))}
-      </div>
+      </ul>
 
-      <AllRights className="legal-footer" />
-    </div>
+      <AllRights hasStyle />
+    </>
   );
 }
 

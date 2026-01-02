@@ -10,10 +10,10 @@ const variants = {
   book: 'text-[18px] leading-[1.8rem] text-gray-700 tracking-[0.8px] my-8'
 };
 
-const Description = ({description, variant}) => {
+const Description = ({description, variant, className}) => {
   return (
     <p
-      className={clsx(' font-serif', variants[variant]
+      className={clsx(' font-serif', variants[variant], className
       )}
     >
       {description}

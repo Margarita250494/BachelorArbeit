@@ -1,6 +1,5 @@
 import React from "react";
 import InformationCard from "./InformationCard";
-import "../Styles/Info.css";
 import {infoData} from '../utils/info.data'
 import SectionHeading from './layout/SectionHeading'
 import CustomSection from './layout/CustomSection'
@@ -12,7 +11,7 @@ function Info() {
       isInfoSection
       id="services"
     >
-      <div className="info-title-content">
+      <div className="mt-16 mb-[128px]">
         <SectionHeading heading="What We Do" />
         <Description
           variant="info"
@@ -24,7 +23,7 @@ function Info() {
         />
       </div>
 
-      <ul className="info-cards-content">
+      <ul className="my-16 grid grid-cols-1 md:grid-cols-2 lg-xl:grid-cols-3 gap-8">
         {infoData.map(({title, icon, description}) => (
           <InformationCard
             key={title}

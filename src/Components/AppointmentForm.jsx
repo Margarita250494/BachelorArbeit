@@ -1,9 +1,13 @@
-import React, {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
-import "../Styles/AppointmentForm.css";
+import {useEffect, useState} from "react";
 import {toast, ToastContainer} from "react-toastify";
 import AllRights from './AllRights'
 import MainButton from './buttons/MainButton'
+import BrandTitle from './BrandTitle'
+import SectionHeading from './layout/SectionHeading'
+import Input from './form/Input'
+import Select from './form/Select'
+import {genderData, modeData} from '../utils/form.data'
+import SuccessMessage from './form/SuccessMessage'
 
 function AppointmentForm() {
   useEffect(() => {
@@ -72,124 +76,92 @@ function AppointmentForm() {
   };
 
   return (
-    <section className="appointment-form-section">
-      <Link
-        to="/"
-        className="legal-siteTitle"
-      >
-        Health <span className="legal-siteSign">+</span>
-      </Link>
-
-
-      <div className="form-container">
-        <h2 className="form-title">
-          <span>Book Appointment Online</span>
-        </h2>
-
-        <form
-          className="form-content"
-          onSubmit={handleSubmit}
-        >
-          <label>
-            Patient Full Name:
-            <input
-              type="text"
-              value={patientName}
-              onChange={(e) => setPatientName(e.target.value)}
-              required
-            />
-            {formErrors.patientName && (
-              <p className="error-message">{formErrors.patientName}</p>
-            )}
-          </label>
-
-          <br />
-          <label>
-            Patient Phone Number:
-            <input
-              type="text"
-              value={patientNumber}
-              onChange={(e) => setPatientNumber(e.target.value)}
-              required
-            />
-            {formErrors.patientNumber && (
-              <p className="error-message">{formErrors.patientNumber}</p>
-            )}
-          </label>
-
-          <br />
-          <label>
-            Patient Gender:
-            <select
-              value={patientGender}
-              onChange={(e) => setPatientGender(e.target.value)}
-              required
-            >
-              <option value="default">Select</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="private">I will inform Doctor only</option>
-            </select>
-            {formErrors.patientGender && (
-              <p className="error-message">{formErrors.patientGender}</p>
-            )}
-          </label>
-
-          <br />
-          <label>
-            Preferred Appointment Time:
-            <input
-              type="datetime-local"
-              value={appointmentTime}
-              onChange={(e) => setAppointmentTime(e.target.value)}
-              required
-            />
-            {formErrors.appointmentTime && (
-              <p className="error-message">{formErrors.appointmentTime}</p>
-            )}
-          </label>
-
-          <br />
-          <label>
-            Preferred Mode:
-            <select
-              value={preferredMode}
-              onChange={(e) => setPreferredMode(e.target.value)}
-              required
-            >
-              <option value="default">Select</option>
-              <option value="voice">Voice Call</option>
-              <option value="video">Video Call</option>
-            </select>
-            {formErrors.preferredMode && (
-              <p className="error-message">{formErrors.preferredMode}</p>
-            )}
-          </label>
-
-          <br />
-          <MainButton
-            type="submit"
-            title="Confirm Appointment"
-          />
-          <p
-            className="success-message"
-            style={{display: isSubmitted ? 'block' : 'none'}}
-          >
-            Appointment details has been sent to the patients phone number via
-            SMS.
-          </p>
-        </form>
+    <>
+      <div className="w-full block pb-2 bg-white text-center">
+        <BrandTitle
+          to="/"
+          classNameComponent="text-[48px] tracking-[0.8px] font-semibold
+          "
+          classNamePlus="text-[56px]"
+        />
       </div>
 
 
-      <AllRights className="legal-footer" />
+      <section className="p-6 md-xs:p-8 flex flex-col gap-10 bg-gradient">
+        <SectionHeading
+          heading="Book Appointment Online"
+          defaultWidth
+          className="!text-[32px]"
+        />
+        <form
+          className="form-content flex flex-col gap-5"
+          onSubmit={handleSubmit}
+        >
+          <Input
+            id="fullName"
+            label="Patient Full Name:"
+            type="text"
+            value={patientName}
+            handleChange={(e) => setPatientName(e.target.value)}
+            error={formErrors.patientName}
+          />
+
+          <Input
+            id="phoneNumber"
+            label="Patient Phone Number:"
+            type="tel"
+            value={patientNumber}
+            handleChange={(e) => setPatientNumber(e.target.value)}
+            error={formErrors.patientNumber}
+          />
+
+          <Select
+            id="gender"
+            label="Patient Gender:"
+            value={patientGender}
+            handleChange={(e) => setPatientGender(e.target.value)}
+            options={genderData}
+            error={formErrors.patientGender}
+          />
+
+
+          <Input
+            id="appointment"
+            label="Preferred Appointment Time:"
+            type="datetime-local"
+            value={appointmentTime}
+            handleChange={(e) => setAppointmentTime(e.target.value)}
+            error={formErrors.appointmentTime}
+          />
+
+
+          <Select
+            id="mode"
+            label="Preferred Mode:"
+            value={preferredMode}
+            handleChange={(e) => setPreferredMode(e.target.value)}
+            error={formErrors.preferredMode}
+            options={modeData}
+          />
+
+          <MainButton
+            type="submit"
+            title="Confirm Appointment"
+            className="max-w-[239px]"
+          />
+          <SuccessMessage isSubmitted={isSubmitted} />
+        </form>
+      </section>
+
+
+      <AllRights hasStyle />
 
       <ToastContainer
         autoClose={5000}
         limit={1}
         closeButton={false}
       />
-    </section>
+    </>
   );
 }
 

@@ -1,6 +1,5 @@
 import React from "react";
 import DoctorCard from "./DoctorCard";
-import "../Styles/Doctors.css";
 import {infoDoctors} from '../utils/doctors.data'
 import SectionHeading from './layout/SectionHeading'
 import CustomSection from './layout/CustomSection'
@@ -12,7 +11,7 @@ function Doctors() {
       id="doctors"
       isInfoSection={false}
     >
-      <div className="dt-title-content">
+      <div className="mb-16">
         <SectionHeading
           defaultWidth={false}
           heading="Meet Our Doctors"
@@ -28,7 +27,7 @@ function Doctors() {
 
       </div>
 
-      <div className="dt-cards-content">
+      <div className="w-full flex flex-wrap justify-center items-center gap-8">
         {infoDoctors.map(({img, name, title, stars, reviews}) => (
           <DoctorCard
             key={name}
