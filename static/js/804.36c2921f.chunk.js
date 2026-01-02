@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkhealth_plus=self.webpackChunkhealth_plus||[]).push([[804],{804:(e,s,n)=>{n.r(s),n.d(s,{default:()=>r});var t=n(216),h=n(579);const r=function(){const e=window.location.href,s=(0,t.zy)();return(0,h.jsxs)(h.Fragment,{children:[(0,h.jsx)("h1",{children:"Page Not Found"}),(0,h.jsxs)("p",{children:["The requested URL ",e," was not found on this server."]}),(0,h.jsxs)("p",{children:["The requested URL ",s.pathname," was not found on this server."]})]})}}}]);
+//# sourceMappingURL=804.36c2921f.chunk.js.map
