@@ -1,88 +1,79 @@
-import React, {useEffect, useState} from "react";
 import Doctor from "../Assets/doctor-picture.webp";
 import {useNavigate} from "react-router-dom";
-import "../Styles/Hero.css";
-import {ArrowUp, CalendarCheck} from '../utils/icons'
+import {CalendarCheck} from '../utils/icons'
 import {infoHero} from '../utils/hero.data'
+import MainButton from './buttons/MainButton'
+import SectionDefault from './layout/SectionDefault'
+import Description from './layout/Description'
+import ScrollToTopButton from './buttons/ScrollToTopButton'
 
 function Hero() {
   const navigate = useNavigate();
-  const [goUp, setGoUp] = useState(false);
-
-  const scrollToTop = () => {
-    window.scrollTo({top: 0, behavior: "smooth"});
-  };
-
   const handleBookAppointmentClick = () => {
     navigate("/appointment");
   };
 
-  useEffect(() => {
-    const onPageScroll = () => {
-      if (window.scrollY > 600) {
-        setGoUp(true);
-      } else {
-        setGoUp(false);
-      }
-    };
-    window.addEventListener("scroll", onPageScroll);
-
-    return () => {
-      window.removeEventListener("scroll", onPageScroll);
-    };
-  }, []);
 
   return (
-    <section className="section-container">
-      <div className="hero-section">
-        <div className="text-section">
-          <h4 className="text-headline">❤️ Health comes first</h4>
-          <h1 className="text-title">
+    <>
+      <SectionDefault
+        isBgWhite={false}
+        isMobileBlock={false}
+      >
+        <div className="w-full px-0 lg:w-[60%] lg:px-8">
+          <h4
+            className="mb-3 text-gray-600 font-serif text-[20px]
+            md-xs:text-[22px] font-bold
+          tracking-[0.7px]"
+          >❤️ Health comes first
+          </h4>
+          <h1
+            className="w-full lg:w-[500px] text-black text-[28px]
+          md-xs:text-[40px] font-bold"
+          >
             Find your Doctor and make an Appointments
           </h1>
-          <p className="text-description">
-            Talk to online doctors and get medical advice, online prescriptions,
-            refills and medical notes within minutes. On-demand healthcare
-            services at your fingertips.
-          </p>
-          <button
-            className="text-appointment-btn"
-            type="button"
+          <Description
+            variant="hero"
+            description="Talk to online doctors and get medical advice,
+            online prescriptions,refills and medical notes within minutes.
+            On-demand healthcare services at your fingertips."
+          />
+          <MainButton
             onClick={handleBookAppointmentClick}
-          >
-            <CalendarCheck /> Book Appointment
-          </button>
-          <ul className="text-stats">
+            icon={<CalendarCheck />}
+            title="Book Appointment"
+          />
+          <ul className="flex items-center gap-[18px] md-xs:gap-12 mt-10">
             {infoHero.map(({id, number, desc}) => (
               <li
                 key={id}
-                className="text-stats-container"
+                className="text-center tracking-[0.7px]"
               >
-                <p>{number}+</p>
-                <p>{desc}</p>
+                <p className="mb-2 text-primary-500 text-[22px] md-xs:text-[32px] font-bold font-serif">{number}+</p>
+                <p
+                  className="text-gray-600 font-sans text-[16px] md-xs:text-[22px]
+                tracking-[0.7px]"
+                >{desc}</p>
               </li>
             ))}
           </ul>
         </div>
 
-        <div className="hero-image-section">
+        <div className="hidden lg:flex justify-center w-[40%] max-w-full">
           <img
-            className="hero-image1"
+            width={641}
+            height={617}
+            className="w-full h-auto"
             src={Doctor}
             alt="Doctor"
             loading="eager"
           />
         </div>
-      </div>
+      </SectionDefault>
 
-      <button
-        type="button"
-        onClick={scrollToTop}
-        className={`scroll-up ${goUp ? 'show-scroll' : ''}`}
-      >
-        <ArrowUp />
-      </button>
-    </section>
+      <ScrollToTopButton />
+    </>
   );
 }
 

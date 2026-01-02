@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import {customerReviews} from "../Scripts/reviews";
-import "../Styles/Reviews.css";
+import ArrowButton from './buttons/ArrowButton'
+import SectionDefault from './layout/SectionDefault'
+import Quote from './Quote'
 
 function Reviews() {
   let rMessage, rName, rLocation;
@@ -31,48 +33,53 @@ function Reviews() {
   handleReviewsUpdation();
 
   return (
-    <section
-      className="review-section"
+    <SectionDefault
       id="reviews"
+      isBgWhite={false}
+      className="tracking-[.8px] md:tracking-normal"
     >
-      <div className="rw-text-content">
-        <p className="rw-text-title">
-          More over <span className="rw-text-num">1500+ Customers</span>
+      <div className="">
+        <p className="my-4 text-gray-400 text-[22px] md:text-[32px] font-bold tracking-[0.7px] font-serif">
+          More over <span className="text-primary-700">1500+ Customers</span>
         </p>
 
-        <h2 className="rw-text-desc">Don't believe us, Check clients word</h2>
+        <h3
+          className="my-4 font-serif text-[28px] md:text-[36px] font-bold
+        tracking-[0.7px] leading-[2.6rem]"
+        >Don't believe us, Check clients word
+        </h3>
 
-        <p className="rw-text-format">
-          <span className="rw-text-quote1">''</span>
-          <span className="rw-review">{rMessage}</span>
-          <span className="rw-text-quote2">''</span>
+        <p className="my-16 flex items-center relative">
+          <Quote isEnd={false} />
+          <span
+            className="block ml-2 font-serif text-[22px] md:text-[24px]
+            tracking-[0.7px] leading-[1.8rem] md:leading-[2.2rem]"
+          >{rMessage}</span>
+          <Quote isEnd />
         </p>
 
-        <div className="rw-authors">
-          <div className="rw-names">
-            <p className="rw-reviewer-name">{rName}</p>
-            <p className="rw-reviewer-place">{rLocation}</p>
+        <div className="ml-2 flex flex-wrap justify-between items-center">
+          <div>
+            <p className="text-[20px] md:text-[24px] font-bold tracking-[0.8px]">{rName}</p>
+            <p
+              className="mt-[6px] text-gray-400 font-serif text-[18px]
+            font-bold tracking-[0.8px]"
+            >{rLocation}</p>
           </div>
 
-          <div className="rw-btns">
-            <button
-              className="rw-next-btn"
-              type="button"
+          <div>
+            <ArrowButton
               onClick={backBtnClick}
-            >
-              ←
-            </button>
-            <button
-              className="rw-next-btn"
-              type="button"
+              arrow="←"
+            />
+            <ArrowButton
               onClick={frontBtnClick}
-            >
-              →
-            </button>
+              arrow="→"
+            />
           </div>
         </div>
       </div>
-    </section>
+    </SectionDefault>
   );
 }
 

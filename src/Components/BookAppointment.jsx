@@ -1,10 +1,14 @@
 import React from "react";
 import Doctor from "../Assets/doctor-book-appointment.webp";
 import {useNavigate} from "react-router-dom";
-import "../Styles/BookAppointment.css";
 import {infoBookAppointment} from '../utils/bookApointment.data'
 import {CalendarCheck, CircleCheck} from '../utils/icons'
 import {clsx} from 'clsx'
+import MainButton from './buttons/MainButton'
+import SectionDefault from './layout/SectionDefault'
+import SectionHeading from './layout/SectionHeading'
+import Description from './layout/Description'
+import ImageContainer from './layout/ImageContainer'
 
 function BookAppointment() {
   const navigate = useNavigate();
@@ -16,48 +20,46 @@ function BookAppointment() {
   const lastItem = infoBookAppointment.length - 1
 
   return (
-    <section className="ba-section">
-      <div className="ba-image-content">
-        <img
-          src={Doctor}
-          alt="Doctor Group"
-          className="ba-image1"
-          loading="lazy"
-        />
-      </div>
+    <SectionDefault
+      isBgWhite
+      isMobileBlock
+    >
+      <ImageContainer
+        image={Doctor}
+        imageAlt="Doctor Group"
+        isBig={false}
+      />
 
-      <div className="ba-text-content">
-        <h2 className="ba-title">
-          Why Choose Health
-        </h2>
-        <p className="ba-description">
-          Discover the reasons to choose Health Plus for your healthcare needs.
+      <div className="w-full lg-xl:w-[50%]">
+        <SectionHeading heading="Why Choose Health" />
+        <Description
+          variant="book"
+          description="Discover the reasons to choose Health Plus for your healthcare needs.
           Experience expert care, convenience, and personalized solutions,
           making your well-being our top priority. Join us on a journey to
-          better health and a happier life.
-        </p>
+          better health and a happier life."
+        />
+
         <ul>
           {infoBookAppointment.map((info, index) => (
             <li
               key={info.title}
-              className={clsx('ba-checks',
-                index === 0 && 'ba-check-first',
-                index === lastItem && 'ba-check-last')}
+              className={clsx('my-7 font-serif text-[22px] font-bold ' +
+                'tracking-[0.7px] flex gap-[6px] items-center',
+                index === 0 && 'mt-10',
+                index === lastItem && 'mb-10')}
             >
-              <CircleCheck className="ba-icon-check" />
+              <CircleCheck className="text-primary-600" />
               {info.title}
             </li>
           ))}</ul>
-
-        <button
-          className="text-appointment-btn"
-          type="button"
+        <MainButton
           onClick={handleBookAppointmentClick}
-        >
-          <CalendarCheck /> Book Appointment
-        </button>
+          icon={<CalendarCheck />}
+          title="Book Appointment"
+        />
       </div>
-    </section>
+    </SectionDefault>
   );
 }
 

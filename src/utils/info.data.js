@@ -8,9 +8,7 @@ export const infoData = [
       '            any medical concern that requires immediate attention, our team of\n' +
       '            dedicated healthcare professionals is available 24/7 to provide\n' +
       '            prompt and efficient care.',
-    icon: <MedicalTruck
-      className="info-fa-icon-big"
-    />
+    icon: <MedicalTruck className="w-[30px] h-6" />
   },
   {
     title: 'Heart Disease',
@@ -19,10 +17,7 @@ export const infoData = [
       "personalized treatment plans. From comprehensive screenings to advanced " +
       "interventions, we are committed to helping you maintain a healthy heart " +
       "and lead a fulfilling life.",
-    icon: <HeartPulse
-      className="info-fa-icon"
-
-    />
+    icon: <HeartPulse size={24} />
   },
   {
     title: 'Dental Care',
@@ -30,9 +25,6 @@ export const infoData = [
       "your oral health needs. Our skilled dentists provide a wide range of " +
       "treatments, from routine check-ups and cleanings to cosmetic procedures " +
       "and restorative treatments.",
-    icon: <Tooth
-      className="info-fa-icon"
-
-    />
+    icon: <Tooth size={24} />
   }
 ]

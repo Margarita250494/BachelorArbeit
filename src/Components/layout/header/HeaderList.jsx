@@ -1,7 +1,7 @@
-import {headerLinksToSections} from '../utils/header.data'
+import {headerLinksToSections} from '../../../utils/header.data'
 import {Link} from 'react-router-dom'
 
-export const HeaderList = ({isMobile = false, className}) => {
+export const HeaderList = ({isMobile = false, className, onClick}) => {
   const itemsToRender = isMobile
     ? headerLinksToSections
     : headerLinksToSections.filter(item => !item.mobileOnly);
@@ -13,8 +13,8 @@ export const HeaderList = ({isMobile = false, className}) => {
           <li key={headerLink.title}>
             <Link
               to={headerLink.link}
-              onClick={headerLink.onClick}
-              className={!isMobile ? "navbar-links" : undefined}
+              className="list-none text-black tracking-[.8px]
+              hover:text-blueSoft-300"
             >
               {headerLink.title}
             </Link>
@@ -23,8 +23,9 @@ export const HeaderList = ({isMobile = false, className}) => {
           <li key={headerLink.title}>
             <a
               href={headerLink.link}
-              onClick={headerLink.onClick}
-              className={!isMobile ? "navbar-links" : undefined}
+              onClick={onClick}
+              className="list-none text-black tracking-[.8px]
+              hover:text-blueSoft-300"
             >
               {headerLink.title}
             </a>

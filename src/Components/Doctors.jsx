@@ -1,28 +1,33 @@
 import React from "react";
 import DoctorCard from "./DoctorCard";
-import "../Styles/Doctors.css";
 import {infoDoctors} from '../utils/doctors.data'
+import SectionHeading from './layout/SectionHeading'
+import CustomSection from './layout/CustomSection'
+import Description from './layout/Description'
 
 function Doctors() {
   return (
-    <section
-      className="doctor-section"
+    <CustomSection
       id="doctors"
+      isInfoSection={false}
     >
-      <div className="dt-title-content">
-        <h2 className="dt-title">
-          <span>Meet Our Doctors</span>
-        </h2>
-
-        <p className="dt-description">
-          Meet our exceptional team of specialist doctors, dedicated to
+      <div className="mb-16">
+        <SectionHeading
+          defaultWidth={false}
+          heading="Meet Our Doctors"
+          className="tracking-[.7px] text-[32px] md:text-[40px]"
+        />
+        <Description
+          variant="doctor"
+          description="Meet our exceptional team of specialist doctors, dedicated to
           providing top-notch healthcare services at Health Plus. Trust in their
           knowledge and experience to lead you towards a healthier and happier
-          life.
-        </p>
+          life."
+        />
+
       </div>
 
-      <div className="dt-cards-content">
+      <div className="w-full flex flex-wrap justify-center items-center gap-8">
         {infoDoctors.map(({img, name, title, stars, reviews}) => (
           <DoctorCard
             key={name}
@@ -33,7 +38,7 @@ function Doctors() {
             reviews={reviews}
           />))}
       </div>
-    </section>
+    </CustomSection>
   );
 }
 
