@@ -1,17 +1,12 @@
 # Health Plus
 
-Welcome to the Health Plus project repository! This is a React-based website
-aimed at providing accessible and personalized healthcare services to users. The
-website allows users to connect with expert doctors, schedule appointments, and
-receive expert medical advice.
+Create React App: optimization: Bachelorarbeit
 
 ## Project Overview
 
-- **Website
-  **: [Health Plus](https://alkaison.github.io/Health-Plus/ "Health Plus")
 - **Framework**: React.js
 - **Deployment**: GitHub Pages
-- **Libraries**: React-Toastify, React Router DOM, FontAwesomeIcon
+- **Libraries**: React-Toastify, React Router DOM,
 
 ## Features
 
