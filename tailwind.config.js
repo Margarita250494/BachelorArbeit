@@ -49,7 +49,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],
-        serif: ['Rubik', 'serif'],
+        serif: ['Rubik', 'sans-serif'],
         'cambria': ['Cambria, sans-serif'],
         'arial': ['Arial']
       },

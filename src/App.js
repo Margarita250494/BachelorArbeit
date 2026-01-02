@@ -1,21 +1,38 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {lazy, Suspense} from "react";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import "./App.css";
-import Home from "./Pages/Home";
-import Legal from "./Pages/Legal";
-import NotFound from "./Pages/NotFound";
-import Appointment from "./Pages/Appointment";
+
+
+// Lazy load pages
+const Home = lazy(() => import("./Pages/Home"));
+const Legal = lazy(() => import("./Pages/Legal"));
+const Appointment = lazy(() => import("./Pages/Appointment"));
+const NotFound = lazy(() => import("./Pages/NotFound"));
 
 function App() {
   return (
     <div className="App">
       <Router basename="/Health-Plus">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/legal" element={<Legal />} />
-          <Route path="/appointment" element={<Appointment />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route
+              path="/"
+              element={<Home />}
+            />
+            <Route
+              path="/legal"
+              element={<Legal />}
+            />
+            <Route
+              path="/appointment"
+              element={<Appointment />}
+            />
+            <Route
+              path="*"
+              element={<NotFound />}
+            />
+          </Routes>
+        </Suspense>
       </Router>
     </div>
   );

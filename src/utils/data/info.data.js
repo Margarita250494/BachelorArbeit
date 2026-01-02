@@ -1,4 +1,4 @@
-import {HeartPulse, MedicalTruck, Tooth} from './icons'
+import {HeartPulse, MedicalTruck, Tooth} from '../icons'
 
 export const infoData = [
   {

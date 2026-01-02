@@ -1,14 +1,15 @@
 import {clsx} from 'clsx'
+import {memo} from 'react'
 
-const MainButton = ({
-                      type = 'button',
-                      icon,
-                      title,
-                      onClick,
-                      disabled,
-                      isMobileHidden,
-                      className
-                    }) => {
+const MainButton = memo(({
+                           type = 'button',
+                           icon,
+                           title,
+                           onClick,
+                           disabled,
+                           isMobileHidden,
+                           className
+                         }) => {
   return (
     <button
       type={type}
@@ -23,7 +24,8 @@ const MainButton = ({
       {icon} {title}
     </button>
   );
-};
+});
+MainButton.displayName = 'MainButton';
 
 export default MainButton;
 

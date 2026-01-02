@@ -1,80 +1,27 @@
-import {useEffect, useState} from "react";
-import {toast, ToastContainer} from "react-toastify";
+import {useEffect} from "react";
+import {ToastContainer} from "react-toastify";
 import AllRights from './AllRights'
 import MainButton from './buttons/MainButton'
 import BrandTitle from './BrandTitle'
 import SectionHeading from './layout/SectionHeading'
 import Input from './form/Input'
 import Select from './form/Select'
-import {genderData, modeData} from '../utils/form.data'
+import {genderData, modeData} from '../utils/data/form.data'
 import SuccessMessage from './form/SuccessMessage'
+import useAppointmentForm from '../utils/hooks/useAppointment.hook'
 
 function AppointmentForm() {
   useEffect(() => {
     window.scrollTo({top: 0, behavior: "smooth"});
-  });
+  }, []);
 
-  const [patientName, setPatientName] = useState("");
-  const [patientNumber, setPatientNumber] = useState("");
-  const [patientGender, setPatientGender] = useState("default");
-  const [appointmentTime, setAppointmentTime] = useState("");
-  const [preferredMode, setPreferredMode] = useState("default");
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [formErrors, setFormErrors] = useState({});
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Validate form inputs
-    const errors = {};
-    if (!patientName.trim()) {
-      errors.patientName = "Patient name is required";
-    } else if (patientName.trim().length < 8) {
-      errors.patientName = "Patient name must be at least 8 characters";
-    }
-
-    if (!patientNumber.trim()) {
-      errors.patientNumber = "Patient phone number is required";
-    } else if (patientNumber.trim().length !== 10) {
-      errors.patientNumber = "Patient phone number must be of 10 digits";
-    }
-
-    if (patientGender === "default") {
-      errors.patientGender = "Please select patient gender";
-    }
-    if (!appointmentTime) {
-      errors.appointmentTime = "Appointment time is required";
-    } else {
-      const selectedTime = new Date(appointmentTime).getTime();
-      const currentTime = new Date().getTime();
-      if (selectedTime <= currentTime) {
-        errors.appointmentTime = "Please select a future appointment time";
-      }
-    }
-    if (preferredMode === "default") {
-      errors.preferredMode = "Please select preferred mode";
-    }
-
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors);
-      return;
-    }
-
-    // Reset form fields and errors after successful submission
-    setPatientName("");
-    setPatientNumber("");
-    setPatientGender("default");
-    setAppointmentTime("");
-    setPreferredMode("default");
-    setFormErrors({});
-
-    toast.success("Appointment Scheduled !", {
-      position: toast.POSITION.TOP_CENTER,
-      onOpen: () => setIsSubmitted(true),
-      onClose: () => setIsSubmitted(false)
-    });
-  };
-
+  const {
+    formData,
+    formErrors,
+    isSubmitted,
+    handleChange,
+    handleSubmit
+  } = useAppointmentForm();
   return (
     <>
       <div className="w-full block pb-2 bg-white text-center">
@@ -101,8 +48,8 @@ function AppointmentForm() {
             id="fullName"
             label="Patient Full Name:"
             type="text"
-            value={patientName}
-            handleChange={(e) => setPatientName(e.target.value)}
+            value={formData.patientName}
+            handleChange={handleChange('patientName')}
             error={formErrors.patientName}
           />
 
@@ -110,16 +57,16 @@ function AppointmentForm() {
             id="phoneNumber"
             label="Patient Phone Number:"
             type="tel"
-            value={patientNumber}
-            handleChange={(e) => setPatientNumber(e.target.value)}
+            value={formData.patientNumber}
+            handleChange={handleChange('patientNumber')}
             error={formErrors.patientNumber}
           />
 
           <Select
             id="gender"
             label="Patient Gender:"
-            value={patientGender}
-            handleChange={(e) => setPatientGender(e.target.value)}
+            value={formData.patientGender}
+            handleChange={handleChange('patientGender')}
             options={genderData}
             error={formErrors.patientGender}
           />
@@ -129,8 +76,8 @@ function AppointmentForm() {
             id="appointment"
             label="Preferred Appointment Time:"
             type="datetime-local"
-            value={appointmentTime}
-            handleChange={(e) => setAppointmentTime(e.target.value)}
+            value={formData.appointmentTime}
+            handleChange={handleChange('appointmentTime')}
             error={formErrors.appointmentTime}
           />
 
@@ -138,8 +85,8 @@ function AppointmentForm() {
           <Select
             id="mode"
             label="Preferred Mode:"
-            value={preferredMode}
-            handleChange={(e) => setPreferredMode(e.target.value)}
+            value={formData.preferredMode}
+            handleChange={handleChange('preferredMode')}
             error={formErrors.preferredMode}
             options={modeData}
           />
